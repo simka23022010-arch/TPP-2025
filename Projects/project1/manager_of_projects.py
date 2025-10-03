@@ -21,12 +21,27 @@ def delete():
         print("Ошибка: Неверный номер строки.")
 
 def search():  # ищет заметку
-    pass
+
+    search_term = input("Введите текст для поиска: ")
+    file.seek(0)
+    lines = file.readlines()
+    found = False
+    for i, line in enumerate(lines):
+        if search_term.lower() in line.lower():
+            print(f"{i}: {line.strip()}")
+            found = True
+    if not found:
+        print("Ничего не найдено.")
+
+
 def close():
     print('До свидания')
     exit()
-def show():  # выводит все
-    pass
+def show():
+    file.seek(0)
+    lines = file.readlines()
+    for line in lines:
+        print(line.strip()) # Выводим каждую строку на новой строке
 
 
 def interface():
