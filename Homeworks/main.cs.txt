@@ -1,0 +1,57 @@
+using System;
+
+public class Student
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Group { get; set; }
+
+    public Student(string name, int age, string group)
+    {
+        Name = name;
+        Age = age;
+        Group = group;
+        Console.WriteLine($"Студент {Name} успешно создан.");
+    }
+
+    public void Study()
+    {
+        Console.WriteLine($"Студент по имени {Name}, которому {Age} лет, учится в группе {Group}.");
+    }
+}
+
+public class MasterStudent : Student
+{
+    public string ThesisTopic { get; set; }
+
+    public MasterStudent(string name, int age, string group, string thesisTopic = "не определена")
+        : base(name, age, group)
+    {
+        ThesisTopic = thesisTopic;
+        Console.WriteLine($"Магистр {Name} успешно создан. Тема диплома: {ThesisTopic}");
+    }
+
+    public void DefendThesis()
+    {
+        Console.WriteLine($"Магистр {Name} готовится к защите своей магистерской диссертации по теме: '{ThesisTopic}'.");
+        Console.WriteLine($"Желаем удачи {Name} в его финальном испытании!");
+    }
+}
+
+public class BachelorStudent : Student
+{
+    public int NumberOfExams { get; set; }
+
+    public BachelorStudent(string name, int age, string group, int numberOfExams = 5)
+        : base(name, age, group)
+    {
+        NumberOfExams = numberOfExams;
+        Console.WriteLine($"Бакалавр {Name} успешно создан.");
+    }
+
+    public void TakeExams()
+    {
+        Console.WriteLine($"Бакалавр {Name} усердно готовится к сессии и сдаче {NumberOfExams} экзаменов.");
+        Console.WriteLine($"Пусть его знания будут глубоки, а оценки - высоки!");
+    }
+}
